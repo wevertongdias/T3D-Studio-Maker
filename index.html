@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="T3D Studio Maker — gestão de produção, estoque, vendas e financeiro.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<title>T3D Studio Maker</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#071426;color:#f5f8fc;font-family:Arial,Helvetica,sans-serif}
+body{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:22px;background:radial-gradient(ellipse at 50% 15%,#12385a 0,#071426 58%)}
+main{width:min(100%,460px);text-align:center;padding:34px 25px 28px;border:1px solid #1c4264;border-radius:26px;background:linear-gradient(155deg,rgba(17,43,69,.98),rgba(7,20,38,.98));box-shadow:0 22px 70px #0008}
+.brand{display:block;width:min(86vw,340px);height:auto;max-height:180px;object-fit:contain;margin:0 auto 22px}
+h1{font-size:25px;letter-spacing:.5px;margin:8px 0 9px}p{color:#bfd0e2;font-size:14px;line-height:1.6;margin:0 auto 25px;max-width:330px}
+.open{display:block;width:100%;padding:16px 20px;border-radius:14px;background:linear-gradient(100deg,#087fbd,#08a9cf);color:white;text-decoration:none;font-weight:700;font-size:16px;box-shadow:0 8px 24px #008fc544}
+.foot{display:block;color:#8fa8c2;font-size:11px;line-height:1.5;margin-top:19px}
+@media(max-width:360px){main{padding:27px 18px}h1{font-size:22px}}
+</style>
+</head>
+<body>
+<main>
+<img class="brand" src="./logo-t3d.png" alt="Logotipo T3D Studio Maker" width="340" height="88">
+<h1>T3D Studio Maker</h1>
+<p>Seu espaço de gestão para organizar produção, estoque, vendas e financeiro.</p>
+<a class="open" id="openApp" href="https://script.google.com/macros/s/AKfycbyYGOSuBkQVEcUxp8rWMrdYOBrGqS4Ld83kbQKS3w8I9tidapgvw6ukcpLCKwUD3-d0/exec">Abrir meu sistema</a>
+<small class="foot">Acesse com internet. Seus dados permanecem na planilha Google vinculada ao sistema.</small>
+</main>
+<script src="./config.js"></script>
+<script>
+const appUrl=window.T3D_CONFIG?.appsScriptUrl;
+if(appUrl && /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec(?:\?.*)?$/.test(appUrl)) document.getElementById('openApp').href=appUrl;
+if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker:',err)));
+</script>
+</body></html>
